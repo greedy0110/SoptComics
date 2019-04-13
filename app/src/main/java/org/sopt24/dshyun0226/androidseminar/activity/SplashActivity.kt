@@ -1,6 +1,5 @@
-package org.sopt24.dshyun0226.androidseminar
+package org.sopt24.dshyun0226.androidseminar.activity
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import org.jetbrains.anko.startActivity

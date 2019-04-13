@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
@@ -16,11 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnMainLogin.setOnClickListener {
-            // 기본
-//            val intent: Intent = Intent(this, LoginActivity::class.java)
-//            intent.putExtra("id", 1)
-//            startActivity(intent)
-
+            Toast.makeText(applicationContext, "hello android", Toast.LENGTH_SHORT).show()
             toast("hello")
             Log.d("mytag", "hello")
 

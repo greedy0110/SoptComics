@@ -13,13 +13,6 @@
         <include
                 android:id="@+id/toolbar_main"
                 layout="@layout/toolbar_main"/>
-        <!--<ImageView-->
-                <!--android:src="@drawable/logo_2line"-->
-                <!--android:scaleType="centerCrop"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="200dp"-->
-                <!--android:adjustViewBounds="true"-->
-                <!--android:id="@+id/imageView"/>-->
 
 
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
@@ -31,16 +24,16 @@
 
             </android.support.v4.view.ViewPager>
 
+            <!--tabIndicatorHeight = 0dp -> 이거 밎줄 없애려고-->
             <android.support.design.widget.TabLayout
                     android:layout_alignBottom="@+id/vp_main_image"
                     android:id="@+id/tl_main_image"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:tabBackground="@drawable/tab_selector"
+                    android:layout_centerHorizontal="true"
+                    app:tabBackground="@drawable/dot_selector"
                     app:tabGravity="center"
-                    app:tabIndicatorHeight="0dp">
-
-            </android.support.design.widget.TabLayout>
+                    app:tabIndicatorHeight="0dp"/>
         </RelativeLayout>
 
 

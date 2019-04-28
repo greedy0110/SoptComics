@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         configureMainImageTab()
         configureMainTab()
 
-        txt_toolbar_main_action.setOnClickListener {
+        img_toolbar_main_action.setOnClickListener {
             if (SharedPreferenceController.getUserID(this).isEmpty()) {
                 startActivity<LoginActivity>()
             }
@@ -41,12 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configureTitleBar() {
-        if (SharedPreferenceController.getUserID(this).isEmpty()) {
-            txt_toolbar_main_action.text = "로그인"
-        }
-        else {
-            txt_toolbar_main_action.text = "로그아웃"
-        }
+        img_toolbar_main_action.isSelected = !SharedPreferenceController.getUserID(this).isEmpty()
     }
 
     private fun configureMainTab() {

@@ -14,6 +14,10 @@
             android:supportsRtl="true"
             android:theme="@style/MainTheme"
             android:usesCleartextTraffic="true">
+        <activity android:name=".activity.CommentActivity">
+        </activity>
+        <activity android:name=".activity.WebtoonActivity">
+        </activity>
         <activity android:name=".activity.ProductActivity">
         </activity>
         <activity android:name=".activity.MainActivity"/>

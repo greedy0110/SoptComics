@@ -15,23 +15,17 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 app:srcCompat="@drawable/back_btn"
-                android:id="@+id/btn_toolbar_product_back"
+                android:id="@+id/btn_toolbar_comment_back"
                 android:layout_weight="0"/>
         <TextView
                 android:text="title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_toolbar_product_title"
+                android:id="@+id/txt_toolbar_comment_title"
                 android:layout_marginLeft="10dp"
                 android:textSize="16dp"
                 android:textColor="#484848"
                 android:textStyle="bold"
-                android:layout_weight="1"/>
-        <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                app:srcCompat="@drawable/heart_selector"
-                android:id="@+id/btn_toolbar_product_like"
                 android:layout_weight="1"/>
     </LinearLayout>
 </android.support.v7.widget.Toolbar>

@@ -14,7 +14,7 @@ import org.sopt24.dshyun0226.androidseminar.R
 import org.sopt24.dshyun0226.androidseminar.activity.ProductActivity
 import org.sopt24.dshyun0226.androidseminar.data.ProductOverviewData
 
-class ProductOverviewRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<ProductOverviewData>):RecyclerView.Adapter<ProductOverviewRecyclerViewAdapter.Holder>() {
+class ProductOverviewRecyclerViewAdapter(val ctx: Context, var dataList: ArrayList<ProductOverviewData>):RecyclerView.Adapter<ProductOverviewRecyclerViewAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view  = LayoutInflater.from(ctx).inflate(R.layout.rv_item_product_overview, viewGroup, false)
         return Holder(view)
@@ -23,15 +23,15 @@ class ProductOverviewRecyclerViewAdapter(val ctx: Context, val dataList: ArrayLi
     // 실제로 화면에 띄워주는 코드!
     override fun onBindViewHolder(holder: Holder, pos: Int) {
         Glide.with(ctx)
-            .load(dataList[pos].img_url)
+            .load(dataList[pos].thumnail)
             .into(holder.img_thumbnail)
         holder.title.text = dataList[pos].title
-        holder.num_like.text = "♥${dataList[pos].num_like}"
-        holder.author.text = dataList[pos].author
+        holder.num_like.text = "♥${dataList[pos].likes}"
+        holder.author.text = dataList[pos].name
 
         holder.container.setOnClickListener {
             ctx.startActivity<ProductActivity>(
-                "product_id" to dataList[pos].product_id,
+                "idx" to dataList[pos].idx,
                 "title" to dataList[pos].title
             )
         }

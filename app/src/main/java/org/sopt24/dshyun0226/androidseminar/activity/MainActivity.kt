@@ -24,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         configureMainTab()
 
         img_toolbar_main_action.setOnClickListener {
-            if (SharedPreferenceController.getUserID(this).isEmpty()) {
+            if (SharedPreferenceController.getUserToken(this).isEmpty()) {
                 startActivity<LoginActivity>()
             }
             else {
                 // 로그아웃
-                SharedPreferenceController.clearUserID(this)
+                SharedPreferenceController.clearUserToken(this)
                 configureTitleBar()
             }
         }
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configureTitleBar() {
-        img_toolbar_main_action.isSelected = !SharedPreferenceController.getUserID(this).isEmpty()
+        img_toolbar_main_action.isSelected = !SharedPreferenceController.getUserToken(this).isEmpty()
     }
 
     private fun configureMainTab() {

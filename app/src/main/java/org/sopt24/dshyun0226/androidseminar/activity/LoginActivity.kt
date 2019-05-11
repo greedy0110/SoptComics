@@ -4,17 +4,31 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
+import org.json.JSONObject
 import org.sopt24.dshyun0226.androidseminar.R
+import org.sopt24.dshyun0226.androidseminar.SoptApplication
 import org.sopt24.dshyun0226.androidseminar.db.SharedPreferenceController
+import org.sopt24.dshyun0226.androidseminar.network.NetworkService
+import org.sopt24.dshyun0226.androidseminar.network.post.PostLoginResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
 class LoginActivity : AppCompatActivity() {
 
     private val REQUEST_CODE = 1000
+
+    private val networkService: NetworkService by lazy {
+        SoptApplication.instance.networkService
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +61,38 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun postLoginResponse(u_id: String, u_pw: String){
+    private fun postLoginResponse(u_id: String, u_pw: String){
         // Request Login
-        SharedPreferenceController.setUserID(this, u_id)
+        val jsonObject = JSONObject().apply {
+            // 보낼 데이터를 json 타입으로 만드는 것
+            put("id", u_id)
+            put("password", u_pw)
+        }
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
 
-        finish()
+        // 실제로 통신을 요청
+        val postLoginResponse: Call<PostLoginResponse> =
+            networkService.postLoginResponse("application/json", gsonObject)
+
+        Log.d("login", "postLoginResponse")
+
+        // 통신 응답에 따라 올바른 행동을 하도록 해야한다.
+        postLoginResponse.enqueue(object : Callback<PostLoginResponse>{
+            override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
+                Log.e("login failed", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>) {
+                Log.d("login", "success ${response.body()}")
+
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == 201) {
+                        SharedPreferenceController.setUserToken(applicationContext, response.body()!!.data!!)
+                        finish()
+                    }
+                }
+            }
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -4,19 +4,28 @@ package org.sopt24.dshyun0226.androidseminar.fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_all_product_main.*
+import kotlinx.android.synthetic.main.fragment_end_product.*
 import kotlinx.android.synthetic.main.fragment_new_product_main.*
 
 import org.sopt24.dshyun0226.androidseminar.R
+import org.sopt24.dshyun0226.androidseminar.SoptApplication
 import org.sopt24.dshyun0226.androidseminar.adapter.ProductOverviewRecyclerViewAdapter
 import org.sopt24.dshyun0226.androidseminar.data.ProductOverviewData
+import org.sopt24.dshyun0226.androidseminar.network.get.GetMainProductListResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NewProductMainFragment : Fragment() {
 
     private lateinit var adapter: ProductOverviewRecyclerViewAdapter
+
+    private val networkService by lazy { SoptApplication.instance.networkService }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,34 +40,35 @@ class NewProductMainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         var dataList: ArrayList<ProductOverviewData> = ArrayList()
-        dataList.add(ProductOverviewData(
-            "http://sopt.org/wp/wp-content/uploads/2014/01/24_SOPT-LOGO_COLOR-1.png",
-            8,"신규작품 1",120,"신규작가 A"))
-        dataList.add(ProductOverviewData(
-            "http://sopt.org/wp/wp-content/uploads/2014/01/24_SOPT-LOGO_COLOR-1.png",
-            9, "신규작품 2", 100, "신규작가 B"))
-        dataList.add(ProductOverviewData(
-            "http://sopt.org/wp/wp-content/uploads/2014/01/24_SOPT-LOGO_COLOR-1.png",
-            10, "신규작품 3", 99, "신규작가 C"))
-        dataList.add(ProductOverviewData(
-            "http://sopt.org/wp/wp-content/uploads/2014/01/24_SOPT-LOGO_COLOR-1.png",
-            11, "신규작품 4", 10, "신규작가 D"))
-        dataList.add(ProductOverviewData(
-            "http://sopt.org/wp/wp-content/uploads/2014/01/24_SOPT-LOGO_COLOR-1.png",
-            12, "신규작품 5", 1, "신규작가 E"))
-        dataList.add(ProductOverviewData(
-            "http://sopt.org/wp/wp-content/uploads/2014/01/24_SOPT-LOGO_COLOR-1.png",
-            13, "신규작품 6", 1, "신규작가 F"))
-        dataList.add(ProductOverviewData(
-            "http://sopt.org/wp/wp-content/uploads/2014/01/24_SOPT-LOGO_COLOR-1.png",
-            14, "신규작품 7", 1, "신규작가 G"))
-        dataList.add(ProductOverviewData(
-            "http://sopt.org/wp/wp-content/uploads/2014/01/24_SOPT-LOGO_COLOR-1.png",
-            15, "신규작품 8", 1, "신규작가 H"))
 
         adapter = ProductOverviewRecyclerViewAdapter(context!!, dataList)
         rv_new_product_overall.adapter = adapter
         rv_new_product_overall.layoutManager = GridLayoutManager(context!!, 3)
+
+        // 서버와의 통신을 통해 dataList를 Update 해준다.
+        getMainProductListResponse()
+    }
+
+    private fun getMainProductListResponse() {
+        val getMainProductListResponse = networkService.getMainProductListResponse("application/json", 2)
+        getMainProductListResponse.enqueue(object : Callback<GetMainProductListResponse>{
+            override fun onFailure(call: Call<GetMainProductListResponse>, t: Throwable) {
+                Log.e("list failed", t.toString())
+            }
+
+            override fun onResponse(
+                call: Call<GetMainProductListResponse>,
+                response: Response<GetMainProductListResponse>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == 200) {
+                        val tmp = response.body()!!.data!!
+                        adapter.dataList = tmp
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+            }
+        })
     }
 
 }

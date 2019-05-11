@@ -4,13 +4,28 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_signup.*
+import org.jetbrains.anko.toast
+import org.json.JSONObject
 import org.sopt24.dshyun0226.androidseminar.R
+import org.sopt24.dshyun0226.androidseminar.SoptApplication
+import org.sopt24.dshyun0226.androidseminar.network.NetworkService
+import org.sopt24.dshyun0226.androidseminar.network.post.PostSignupResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
 class SignupActivity : AppCompatActivity() {
+
+    private val networkService: NetworkService by lazy {
+        SoptApplication.instance.networkService
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,19 +50,41 @@ class SignupActivity : AppCompatActivity() {
             else if(signup_u_pw == "") edtSignupPW.requestFocus()
             else{
                 postSignupResponse(signup_u_id, signup_u_pw, signup_u_name)
-                finish()
             }
         }
     }
 
-    fun postSignupResponse(u_id: String, u_pw: String, u_nmae: String){
-        val simpleDateFormat = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-        val e_time = simpleDateFormat.format(Date())
+    fun postSignupResponse(u_id: String, u_pw: String, u_name: String){
+        val jsonObject = JSONObject().apply {
+            put("id", u_id)
+            put("name", u_name)
+            put("password", u_pw)
+        }
 
-        val intent = Intent()
-        intent.putExtra("end_time", e_time)
-        setResult(Activity.RESULT_OK, intent) // 부모에게 intent 를 전달
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
 
-        finish()
+        val postSignupResponse = networkService.postSignupResponse("application/json", gsonObject)
+
+        postSignupResponse.enqueue(object : Callback<PostSignupResponse>{
+            override fun onFailure(call: Call<PostSignupResponse>, t: Throwable) {
+                Log.e("Signup failed", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostSignupResponse>, response: Response<PostSignupResponse>) {
+                if (response.isSuccessful) {
+                    toast(response.body()!!.message)
+                    if (response.body()!!.status == 201) {
+                        // Request Signup
+                        val simpleDateFormat = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+                        val e_time = simpleDateFormat.format(Date())
+
+                        val intent: Intent = Intent()
+                        intent.putExtra("end_time", e_time)
+                        setResult(Activity.RESULT_OK, intent)
+                        finish()
+                    }
+                }
+            }
+        })
     }
 }

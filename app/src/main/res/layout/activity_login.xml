@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.LoginActivity">
+        tools:context=".login.LoginActivity">
 
     <LinearLayout
             android:layout_centerInParent="true"
@@ -32,7 +32,7 @@
                 android:textColorHint="#CECECE"
                 android:layout_marginTop="80dp"
                 android:paddingLeft="15dp"
-                android:background="@drawable/gray_border"
+                android:background="@drawable/border_selector"
                 android:id="@+id/edtLoginID" android:textSize="12dp"/>
         <EditText
                 android:layout_width="240dp"
@@ -43,7 +43,7 @@
                 android:textColorHint="#CECECE"
                 android:layout_marginTop="15dp"
                 android:paddingLeft="15dp"
-                android:background="@drawable/gray_border"
+                android:background="@drawable/border_selector"
                 android:id="@+id/edtLoginPW" android:textSize="12dp"/>
         <Button
                 android:text="로그인"

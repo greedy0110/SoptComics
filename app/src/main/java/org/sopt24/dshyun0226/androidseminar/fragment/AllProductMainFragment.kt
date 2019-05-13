@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_all_product_main.*
 
 import org.sopt24.dshyun0226.androidseminar.R
@@ -47,23 +49,15 @@ class AllProductMainFragment : Fragment() {
 
     private fun getMainProductListResponse() {
         val getMainProductListResponse = networkService.getMainProductListResponse("application/json", 1)
-        getMainProductListResponse.enqueue(object : Callback<GetMainProductListResponse> {
-            override fun onFailure(call: Call<GetMainProductListResponse>, t: Throwable) {
-                Log.e("list failed", t.toString())
+        getMainProductListResponse
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+            if (it.status == 200) {
+                val tmp = it.data!!
+                adapter.dataList = tmp
+                adapter.notifyDataSetChanged()
             }
-
-            override fun onResponse(
-                call: Call<GetMainProductListResponse>,
-                response: Response<GetMainProductListResponse>
-            ) {
-                if (response.isSuccessful) {
-                    if (response.body()!!.status == 200) {
-                        val tmp = response.body()!!.data!!
-                        adapter.dataList = tmp
-                        adapter.notifyDataSetChanged()
-                    }
-                }
-            }
-        })
+        }
     }
 }

@@ -1,6 +1,7 @@
 package org.sopt24.dshyun0226.androidseminar.network
 
 import com.google.gson.JsonObject
+import io.reactivex.Observable
 import org.sopt24.dshyun0226.androidseminar.network.get.GetMainProductListResponse
 import org.sopt24.dshyun0226.androidseminar.network.post.PostLoginResponse
 import org.sopt24.dshyun0226.androidseminar.network.post.PostSignupResponse
@@ -12,17 +13,17 @@ interface NetworkService {
     fun postLoginResponse(
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
-    ): Call<PostLoginResponse>
+    ): Observable<PostLoginResponse>
 
     @POST("api/auth/signup")
     fun postSignupResponse(
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
-    ): Call<PostSignupResponse>
+    ): Observable<PostSignupResponse>
 
     @GET("api/webtoons/main/{flag}")
     fun getMainProductListResponse(
         @Header("Content-Type") content_type: String,
         @Path("flag") flag: Int
-    ): Call<GetMainProductListResponse>
+    ): Observable<GetMainProductListResponse>
 }

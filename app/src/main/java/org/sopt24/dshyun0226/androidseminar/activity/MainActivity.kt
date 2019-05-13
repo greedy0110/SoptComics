@@ -13,6 +13,7 @@ import org.sopt24.dshyun0226.androidseminar.adapter.ProductMainPagerAdapter
 import org.sopt24.dshyun0226.androidseminar.R
 import org.sopt24.dshyun0226.androidseminar.adapter.ImageMainPagerAdapter
 import org.sopt24.dshyun0226.androidseminar.db.SharedPreferenceController
+import org.sopt24.dshyun0226.androidseminar.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

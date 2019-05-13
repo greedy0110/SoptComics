@@ -65,26 +65,11 @@ class SignupActivity : AppCompatActivity() {
 
         val postSignupResponse = networkService.postSignupResponse("application/json", gsonObject)
 
-        postSignupResponse.enqueue(object : Callback<PostSignupResponse>{
-            override fun onFailure(call: Call<PostSignupResponse>, t: Throwable) {
-                Log.e("Signup failed", t.toString())
+        postSignupResponse.subscribe {
+            toast(it.message)
+            if (it.status == 201) {
+                finish()
             }
-
-            override fun onResponse(call: Call<PostSignupResponse>, response: Response<PostSignupResponse>) {
-                if (response.isSuccessful) {
-                    toast(response.body()!!.message)
-                    if (response.body()!!.status == 201) {
-                        // Request Signup
-                        val simpleDateFormat = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-                        val e_time = simpleDateFormat.format(Date())
-
-                        val intent: Intent = Intent()
-                        intent.putExtra("end_time", e_time)
-                        setResult(Activity.RESULT_OK, intent)
-                        finish()
-                    }
-                }
-            }
-        })
+        }
     }
 }

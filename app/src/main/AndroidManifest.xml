@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.sopt24.dshyun0226.androidseminar">
+          package="org.sopt24.dshyun0226.soptcomics">
     <!-- 인터넷 접근 허용, 네트워크 상태 접근 허용, 와이파이 상태 접근 허용 -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
-            android:name=".SoptApplication"
+            android:name="org.sopt24.dshyun0226.soptcomics.SoptApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -15,15 +15,15 @@
             android:supportsRtl="true"
             android:theme="@style/MainTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".activity.CommentActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.CommentActivity">
         </activity>
-        <activity android:name=".activity.WebtoonActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.WebtoonActivity">
         </activity>
-        <activity android:name=".activity.ProductActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.ProductActivity">
         </activity>
-        <activity android:name=".activity.MainActivity"/>
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.MainActivity"/>
         <activity
-                android:name=".activity.SplashActivity"
+                android:name="org.sopt24.dshyun0226.soptcomics.activity.SplashActivity"
                 android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,9 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.login.LoginActivity">
         </activity>
-        <activity android:name=".activity.SignupActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.signup.SignupActivity">
         </activity>
     </application>
 

@@ -2,8 +2,8 @@ package org.sopt24.dshyun0226.soptcomics.fragment
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +16,7 @@ import org.sopt24.dshyun0226.soptcomics.SoptApplication
 import org.sopt24.dshyun0226.soptcomics.adapter.ProductOverviewRecyclerViewAdapter
 import org.sopt24.dshyun0226.soptcomics.data.ProductOverviewData
 
-class AllProductMainFragment : Fragment() {
+class AllProductMainFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var adapter: ProductOverviewRecyclerViewAdapter
 
@@ -37,7 +37,7 @@ class AllProductMainFragment : Fragment() {
 
         adapter = ProductOverviewRecyclerViewAdapter(context!!, dataList)
         rv_product_overview_all.adapter = adapter
-        rv_product_overview_all.layoutManager = GridLayoutManager(context!!, 3)
+        rv_product_overview_all.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context!!, 3)
         // 서버와의 통신을 통해 dataList를 Update 해준다.
         getMainProductListResponse()
     }

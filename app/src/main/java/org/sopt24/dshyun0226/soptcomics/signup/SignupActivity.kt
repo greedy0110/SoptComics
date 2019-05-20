@@ -1,6 +1,6 @@
 package org.sopt24.dshyun0226.soptcomics.signup
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_signup.*
 import org.sopt24.dshyun0226.soptcomics.R
@@ -8,7 +8,7 @@ import org.sopt24.dshyun0226.soptcomics.data.source.UserRetrofitApi
 
 class SignupActivity : AppCompatActivity(), SignupContract.View {
 
-    override var presenter: SignupContract.Presenter = SignupPresenter(this, UserRetrofitApi())
+    override val presenter: SignupContract.Presenter = SignupPresenter(this, UserRetrofitApi())
 
     override fun focusEditSignupName() {
         edtSignupName.requestFocus()

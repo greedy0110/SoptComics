@@ -1,9 +1,12 @@
 package org.sopt24.dshyun0226.soptcomics.login
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.ParametersDefinition
+import org.koin.core.parameter.parametersOf
 import org.sopt24.dshyun0226.soptcomics.R
 import org.sopt24.dshyun0226.soptcomics.signup.SignupActivity
 import org.sopt24.dshyun0226.soptcomics.data.source.UserRetrofitApi
@@ -22,8 +25,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         startActivity<SignupActivity>()
     }
 
-    // TODO 사실은 UserRepository 는 어디서 접근해도 하나의 객체에서 접근해야하는 object 이다.
-    override var presenter: LoginContract.Presenter = LoginPresenter(UserRetrofitApi() ,UserRepository(this), this)
+    override val presenter: LoginContract.Presenter by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,8 +1,8 @@
 package org.sopt24.dshyun0226.soptcomics.activity
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import khronos.Dates
 import kotlinx.android.synthetic.main.activity_comment.*
 import kotlinx.android.synthetic.main.toolbar_comment.*
@@ -63,6 +63,6 @@ class CommentActivity : AppCompatActivity() {
 
         adapter = CommentAdapter(this, data)
         rv_comment_activity.adapter = adapter
-        rv_comment_activity.layoutManager = LinearLayoutManager(this)
+        rv_comment_activity.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
     }
 }

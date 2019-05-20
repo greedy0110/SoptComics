@@ -1,13 +1,13 @@
 package org.sopt24.dshyun0226.soptcomics.adapter
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import org.sopt24.dshyun0226.soptcomics.fragment.SliderMainFragment
 
-class ImageMainPagerAdapter(fm: FragmentManager?, private val num_fragment: Int) : FragmentStatePagerAdapter(fm) {
-    override fun getItem(p0: Int): Fragment? {
+class ImageMainPagerAdapter(fm: androidx.fragment.app.FragmentManager?, private val num_fragment: Int) : androidx.fragment.app.FragmentStatePagerAdapter(fm) {
+    override fun getItem(p0: Int): androidx.fragment.app.Fragment? {
         val fragment = SliderMainFragment()
         val bundle = Bundle(1)
 

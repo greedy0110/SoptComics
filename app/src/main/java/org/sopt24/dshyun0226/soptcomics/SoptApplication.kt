@@ -2,6 +2,15 @@ package org.sopt24.dshyun0226.soptcomics
 
 import android.app.Application
 import io.reactivex.schedulers.Schedulers
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
+import org.sopt24.dshyun0226.soptcomics.data.source.UserApi
+import org.sopt24.dshyun0226.soptcomics.data.source.UserDataSource
+import org.sopt24.dshyun0226.soptcomics.data.source.UserRepository
+import org.sopt24.dshyun0226.soptcomics.data.source.UserRetrofitApi
+import org.sopt24.dshyun0226.soptcomics.login.LoginContract
+import org.sopt24.dshyun0226.soptcomics.login.LoginPresenter
 import org.sopt24.dshyun0226.soptcomics.network.NetworkService
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -19,6 +28,11 @@ class SoptApplication: Application() {
         super.onCreate()
         instance = this
         buildNetwork()
+
+        startKoin {
+            androidContext(this@SoptApplication)
+            modules(module)
+        }
     }
 
     private fun buildNetwork() {
@@ -30,4 +44,11 @@ class SoptApplication: Application() {
 
         networkService = retrofit.create(NetworkService::class.java)
     }
+}
+
+val module = module {
+    factory { (view: LoginContract.View) -> LoginPresenter(userApi = get(), userDataSource = get() ,view = view) as LoginContract.Presenter }
+
+    single { UserRetrofitApi() as UserApi }
+    single { UserRepository(get()) as UserDataSource }
 }

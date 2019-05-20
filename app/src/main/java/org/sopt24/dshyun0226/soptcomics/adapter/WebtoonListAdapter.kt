@@ -1,7 +1,7 @@
 package org.sopt24.dshyun0226.soptcomics.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +15,7 @@ import khronos.toString
 import org.jetbrains.anko.startActivity
 import org.sopt24.dshyun0226.soptcomics.activity.WebtoonActivity
 
-class WebtoonListAdapter(private val ctx: Context, var data: ArrayList<WebToonData>): RecyclerView.Adapter<WebtoonListAdapter.Holder>() {
+class WebtoonListAdapter(private val ctx: Context, var data: ArrayList<WebToonData>): androidx.recyclerview.widget.RecyclerView.Adapter<WebtoonListAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view  = LayoutInflater.from(ctx).inflate(R.layout.rv_item_webtoon_list, viewGroup, false)
         return Holder(view)
@@ -41,7 +41,7 @@ class WebtoonListAdapter(private val ctx: Context, var data: ArrayList<WebToonDa
         }
     }
 
-    inner class Holder(view: View): RecyclerView.ViewHolder(view) {
+    inner class Holder(view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         val container = view.findViewById<LinearLayout>(R.id.ll_rv_item_webtoon_list_container)
         val img_thumbnail = view.findViewById<ImageView>(R.id.img_rv_item_webtoon_thumbnail)
         val txt_title = view.findViewById<TextView>(R.id.txt_rv_item_webtoon_title)

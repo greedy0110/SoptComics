@@ -1,13 +1,13 @@
 package org.sopt24.dshyun0226.soptcomics.adapter
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import org.sopt24.dshyun0226.soptcomics.fragment.AllProductMainFragment
 import org.sopt24.dshyun0226.soptcomics.fragment.EndProductFragment
 import org.sopt24.dshyun0226.soptcomics.fragment.NewProductMainFragment
 
-class ProductMainPagerAdapter(fm: FragmentManager, private val num_fragment: Int) : FragmentStatePagerAdapter(fm) {
+class ProductMainPagerAdapter(fm: androidx.fragment.app.FragmentManager, private val num_fragment: Int) : androidx.fragment.app.FragmentStatePagerAdapter(fm) {
     companion object { // 어뎁터에서 별도로 fragment 를 관리할 수 있다.
         private var allProductFragment: AllProductMainFragment? = null
         private var newProductMainFragment: NewProductMainFragment? = null
@@ -34,7 +34,7 @@ class ProductMainPagerAdapter(fm: FragmentManager, private val num_fragment: Int
 
     // 그떄 그때 생성되는게 아니라 어댑터에서 자체적으로 관리한다는 뜻? -> ㄴㄴ 싱글톤 디자인 패턴을 사용해서 최적화 가능
     // 매번 호출 시마다 새로운 생성자 객체 생성하는데? -> 이러먄 기본 adapter 호출에 따라 조정됨
-    override fun getItem(p0: Int): Fragment? {
+    override fun getItem(p0: Int): androidx.fragment.app.Fragment? {
         return when (p0) {
             0 -> getAllProductMainFragment()
             1 -> getNewProductMainFragment()

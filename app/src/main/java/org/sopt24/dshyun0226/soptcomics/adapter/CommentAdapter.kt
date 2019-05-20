@@ -1,7 +1,7 @@
 package org.sopt24.dshyun0226.soptcomics.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import khronos.toString
 import org.sopt24.dshyun0226.soptcomics.R
 import org.sopt24.dshyun0226.soptcomics.data.CommentData
 
-class CommentAdapter(private val ctx: Context, var data: ArrayList<CommentData>): RecyclerView.Adapter<CommentAdapter.Holder>() {
+class CommentAdapter(private val ctx: Context, var data: ArrayList<CommentData>): androidx.recyclerview.widget.RecyclerView.Adapter<CommentAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(ctx).inflate(R.layout.rv_item_comment, viewGroup, false)
         return Holder(view)
@@ -32,7 +32,7 @@ class CommentAdapter(private val ctx: Context, var data: ArrayList<CommentData>)
         holder.txt_content.text = t.content
     }
 
-    inner class Holder(view: View): RecyclerView.ViewHolder(view) {
+    inner class Holder(view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         val container = view.findViewById<LinearLayout>(R.id.ll_rv_item_comment_list_container)
         val img_thumbnail = view.findViewById<ImageView>(R.id.img_rv_item_comment_thumbnail)
         val txt_nickname = view.findViewById<TextView>(R.id.txt_rv_item_comment_nickname)

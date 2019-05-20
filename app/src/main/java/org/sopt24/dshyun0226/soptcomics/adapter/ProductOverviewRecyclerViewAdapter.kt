@@ -1,7 +1,7 @@
 package org.sopt24.dshyun0226.soptcomics.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,8 @@ import org.sopt24.dshyun0226.soptcomics.R
 import org.sopt24.dshyun0226.soptcomics.activity.ProductActivity
 import org.sopt24.dshyun0226.soptcomics.data.ProductOverviewData
 
-class ProductOverviewRecyclerViewAdapter(val ctx: Context, var dataList: ArrayList<ProductOverviewData>):RecyclerView.Adapter<ProductOverviewRecyclerViewAdapter.Holder>() {
+class ProductOverviewRecyclerViewAdapter(val ctx: Context, var dataList: ArrayList<ProductOverviewData>):
+    androidx.recyclerview.widget.RecyclerView.Adapter<ProductOverviewRecyclerViewAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view  = LayoutInflater.from(ctx).inflate(R.layout.rv_item_product_overview, viewGroup, false)
         return Holder(view)
@@ -39,7 +40,7 @@ class ProductOverviewRecyclerViewAdapter(val ctx: Context, var dataList: ArrayLi
 
     override fun getItemCount() = dataList.size
 
-    inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class Holder(itemView: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         var container = itemView.findViewById(R.id.ll_rv_item_product_overview_container) as LinearLayout
         var img_thumbnail = itemView.findViewById(R.id.img_rv_item_product_overview_thumbnail) as ImageView
         var title = itemView.findViewById(R.id.txt_rv_item_product_overview_title) as TextView

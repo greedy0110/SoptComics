@@ -13,7 +13,7 @@ class LoginPresenter(
             id.isEmpty() -> view.focusEditLoginID()
             pw.isEmpty() -> view.focusEditLoginPW()
             else -> {
-                userApi.getToken(id, pw)
+                userApi.requestToken(id, pw)
                     .subscribe {
                         userDataSource.setUserToken(id)
                         view.finish()

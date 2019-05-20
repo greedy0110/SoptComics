@@ -10,7 +10,7 @@ import org.sopt24.dshyun0226.soptcomics.SoptApplication
 import org.sopt24.dshyun0226.soptcomics.network.post.PostSignupResponse
 
 class UserRetrofitApi : UserApi {
-    override fun getToken(id: String, pw: String): Observable<String> {
+    override fun requestToken(id: String, pw: String): Observable<String> {
         // Request Login
         val jsonObject = JSONObject().apply {
             // 보낼 데이터를 json 타입으로 만드는 것

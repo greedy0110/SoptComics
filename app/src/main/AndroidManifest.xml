@@ -21,7 +21,7 @@
         </activity>
         <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.ProductActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.MainActivity"/>
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.main.MainActivity"/>
         <activity
                 android:name="org.sopt24.dshyun0226.soptcomics.activity.SplashActivity"
                 android:theme="@style/SplashTheme">

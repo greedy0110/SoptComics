@@ -25,7 +25,7 @@ class LoginPresenterTest {
         // inject the mocks in the test the initMocks method needs to be called.
         MockitoAnnotations.initMocks(this)
 
-        `when`(api.getToken(Matchers.anyString(), Matchers.anyString())).thenReturn(Observable.just("123"))
+        `when`(api.requestToken(Matchers.anyString(), Matchers.anyString())).thenReturn(Observable.just("123"))
 
         loginPresenter = LoginPresenter(view = loginView ,userApi = api, userDataSource = userRepository)
     }

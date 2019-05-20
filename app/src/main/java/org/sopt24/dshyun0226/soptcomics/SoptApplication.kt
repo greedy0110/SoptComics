@@ -11,7 +11,11 @@ import org.sopt24.dshyun0226.soptcomics.data.source.UserRepository
 import org.sopt24.dshyun0226.soptcomics.data.source.UserRetrofitApi
 import org.sopt24.dshyun0226.soptcomics.login.LoginContract
 import org.sopt24.dshyun0226.soptcomics.login.LoginPresenter
+import org.sopt24.dshyun0226.soptcomics.main.MainContract
+import org.sopt24.dshyun0226.soptcomics.main.MainPresenter
 import org.sopt24.dshyun0226.soptcomics.network.NetworkService
+import org.sopt24.dshyun0226.soptcomics.signup.SignupContract
+import org.sopt24.dshyun0226.soptcomics.signup.SignupPresenter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -47,6 +51,8 @@ class SoptApplication: Application() {
 }
 
 val module = module {
+    factory { (view: MainContract.View) -> MainPresenter(view = view, userDataSource = get()) as MainContract.Presenter }
+    factory { (view: SignupContract.View) -> SignupPresenter(userApi = get(), view = view) as SignupContract.Presenter }
     factory { (view: LoginContract.View) -> LoginPresenter(userApi = get(), userDataSource = get() ,view = view) as LoginContract.Presenter }
 
     single { UserRetrofitApi() as UserApi }

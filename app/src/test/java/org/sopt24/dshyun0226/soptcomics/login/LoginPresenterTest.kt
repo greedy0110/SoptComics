@@ -8,8 +8,10 @@ import org.mockito.Matchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import org.sopt24.dshyun0226.soptcomics.data.source.UserApi
-import org.sopt24.dshyun0226.soptcomics.data.source.UserDataSource
+import org.sopt24.dshyun0226.soptcomics.domain.repository.UserApi
+import org.sopt24.dshyun0226.soptcomics.domain.repository.UserDataSource
+import org.sopt24.dshyun0226.soptcomics.presentation.contract.LoginContract
+import org.sopt24.dshyun0226.soptcomics.presentation.presenter.LoginPresenter
 
 class LoginPresenterTest {
     private lateinit var loginPresenter: LoginPresenter
@@ -27,7 +29,11 @@ class LoginPresenterTest {
 
         `when`(api.requestToken(Matchers.anyString(), Matchers.anyString())).thenReturn(Observable.just("123"))
 
-        loginPresenter = LoginPresenter(view = loginView ,userApi = api, userDataSource = userRepository)
+        loginPresenter = LoginPresenter(
+            view = loginView,
+            userApi = api,
+            userDataSource = userRepository
+        )
     }
 
     // 로그인 눌렀는데 아이디가 없는 경우 login id 에 포커스 이동

@@ -1,13 +1,13 @@
 package org.sopt24.dshyun0226.soptcomics.main
 
 import org.junit.Test
-import org.junit.Assert.*
 import org.junit.Before
-import org.mockito.Matchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import org.sopt24.dshyun0226.soptcomics.data.source.UserDataSource
+import org.sopt24.dshyun0226.soptcomics.domain.repository.UserDataSource
+import org.sopt24.dshyun0226.soptcomics.presentation.contract.MainContract
+import org.sopt24.dshyun0226.soptcomics.presentation.presenter.MainPresenter
 
 class MainPresenterTest {
     private lateinit var mainPresenter: MainPresenter
@@ -20,7 +20,10 @@ class MainPresenterTest {
     fun setupMainPresenter() {
         MockitoAnnotations.initMocks(this)
 
-        mainPresenter = MainPresenter(view = mainView, userDataSource = userDataSource)
+        mainPresenter = MainPresenter(
+            view = mainView,
+            userDataSource = userDataSource
+        )
     }
 
     @Test

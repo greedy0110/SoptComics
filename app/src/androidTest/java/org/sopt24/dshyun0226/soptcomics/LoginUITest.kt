@@ -1,25 +1,16 @@
 package org.sopt24.dshyun0226.soptcomics
 
-import android.view.WindowManager
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Root
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import org.hamcrest.Description
-import org.hamcrest.TypeSafeMatcher
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.loadKoinModules
-import org.koin.core.context.startKoin
-import org.mockito.Mock
-import org.sopt24.dshyun0226.soptcomics.login.LoginActivity
+import org.sopt24.dshyun0226.soptcomics.presentation.view.LoginActivity
 
 
 // 1. Find a view -> 2. Perform an action -> 3. Inspect the result

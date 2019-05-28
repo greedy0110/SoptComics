@@ -15,15 +15,15 @@
             android:supportsRtl="true"
             android:theme="@style/MainTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.CommentActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.CommentActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.WebtoonActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.WebtoonActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.activity.ProductActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.ProductActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.main.MainActivity"/>
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.MainActivity"/>
         <activity
-                android:name="org.sopt24.dshyun0226.soptcomics.activity.SplashActivity"
+                android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.SplashActivity"
                 android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,9 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.login.LoginActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.LoginActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.signup.SignupActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.SignupActivity">
         </activity>
     </application>
 

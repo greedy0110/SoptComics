@@ -7,8 +7,10 @@ import org.mockito.Matchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import org.sopt24.dshyun0226.soptcomics.data.source.UserApi
-import org.sopt24.dshyun0226.soptcomics.network.post.PostSignupResponse
+import org.sopt24.dshyun0226.soptcomics.domain.repository.UserApi
+import org.sopt24.dshyun0226.soptcomics.domain.model.response.PostSignupResponse
+import org.sopt24.dshyun0226.soptcomics.presentation.contract.SignupContract
+import org.sopt24.dshyun0226.soptcomics.presentation.presenter.SignupPresenter
 
 class SignupPresenterTest {
     private lateinit var signupPresenter: SignupPresenter
@@ -28,7 +30,8 @@ class SignupPresenterTest {
                 )
             ))
 
-        signupPresenter = SignupPresenter(view = signupView, userApi = api)
+        signupPresenter =
+            SignupPresenter(view = signupView, userApi = api)
     }
 
     // 이름을 입력 안하고 회원가입을 요청하면 이름 입력에 포커스를 준다.

@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.data.repository
+package org.sopt24.dshyun0226.soptcomics.repository
 
 import android.content.Context
 import android.content.SharedPreferences

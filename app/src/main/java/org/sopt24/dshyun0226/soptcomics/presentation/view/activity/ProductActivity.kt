@@ -6,7 +6,7 @@ import khronos.Dates
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.toolbar_product.*
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.presentation.view.adapter.WebtoonListAdapter
+import org.sopt24.dshyun0226.soptcomics.presentation.adapter.WebtoonListAdapter
 import org.sopt24.dshyun0226.soptcomics.domain.model.WebToonData
 import java.util.*
 

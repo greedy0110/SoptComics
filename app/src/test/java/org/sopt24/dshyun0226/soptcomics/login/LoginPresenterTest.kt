@@ -8,7 +8,7 @@ import org.mockito.Matchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import org.sopt24.dshyun0226.soptcomics.domain.repository.UserApi
+import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.domain.repository.UserDataSource
 import org.sopt24.dshyun0226.soptcomics.presentation.contract.LoginContract
 import org.sopt24.dshyun0226.soptcomics.presentation.presenter.LoginPresenter
@@ -19,7 +19,7 @@ class LoginPresenterTest {
     // 테스트를 하려다 보니까 실제 데이터를 받아오는 repository 가 인터페이스화 되어야 한다. unit test 에서는 ctx를 넘길 수 가 없다.
     @Mock private lateinit var loginView: LoginContract.View
     @Mock private lateinit var userRepository: UserDataSource
-    @Mock private lateinit var api: UserApi
+    @Mock private lateinit var api: SoptComicsApi
 
     @Before
     fun setupLoginPresenter() {
@@ -31,7 +31,7 @@ class LoginPresenterTest {
 
         loginPresenter = LoginPresenter(
             view = loginView,
-            userApi = api,
+            api = api,
             userDataSource = userRepository
         )
     }

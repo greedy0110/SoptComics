@@ -6,14 +6,14 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONObject
-import org.sopt24.dshyun0226.soptcomics.SoptApplication
-import org.sopt24.dshyun0226.soptcomics.domain.repository.UserApi
-import org.sopt24.dshyun0226.soptcomics.domain.model.response.PostSignupResponse
+import org.sopt24.dshyun0226.soptcomics.api.response.GetMainProductListResponse
+import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
+import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class UserRetrofitApi : UserApi {
+class SoptComicsRetrofitApi : SoptComicsApi {
     private val baseURL = "http://hyunjkluz.ml:2424/"
 
     private val retrofitSoptComicsApi by lazy { Retrofit.Builder()
@@ -21,7 +21,7 @@ class UserRetrofitApi : UserApi {
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
-        .create(SoptComicsApi::class.java)
+        .create(SoptComicsRetrofitApiInterface::class.java)
     }
 
 
@@ -53,5 +53,17 @@ class UserRetrofitApi : UserApi {
         val postSignupResponse = retrofitSoptComicsApi.postSignupResponse("application/json", gsonObject)
 
         return postSignupResponse.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun requestProductList(kind: String): Observable<GetMainProductListResponse> {
+        return retrofitSoptComicsApi.getMainProductListResponse("application/json", kindToFlag(kind))
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    }
+
+    private fun kindToFlag(kind: String):Int = when(kind) {
+        "all" -> 1
+        "new" -> 2
+        "end" -> 3
+        else -> 1
     }
 }

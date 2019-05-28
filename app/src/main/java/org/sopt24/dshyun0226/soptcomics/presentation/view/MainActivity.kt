@@ -12,9 +12,9 @@ import kotlinx.android.synthetic.main.toolbar_main.*
 import org.jetbrains.anko.startActivity
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
-import org.sopt24.dshyun0226.soptcomics.presentation.view.adapter.ProductMainPagerAdapter
+import org.sopt24.dshyun0226.soptcomics.presentation.adapter.ProductMainPagerAdapter
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.presentation.view.adapter.ImageMainPagerAdapter
+import org.sopt24.dshyun0226.soptcomics.presentation.adapter.ImageMainPagerAdapter
 import org.sopt24.dshyun0226.soptcomics.presentation.contract.MainContract
 
 class MainActivity : AppCompatActivity(), MainContract.View {

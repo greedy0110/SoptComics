@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.domain.model.response
+package org.sopt24.dshyun0226.soptcomics.api.response
 
 import org.sopt24.dshyun0226.soptcomics.domain.model.ProductOverviewData
 

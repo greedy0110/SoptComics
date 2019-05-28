@@ -1,30 +1,28 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.view.adapter
+package org.sopt24.dshyun0226.soptcomics.presentation.adapter
 
-import org.sopt24.dshyun0226.soptcomics.presentation.view.fragment.AllProductMainFragment
-import org.sopt24.dshyun0226.soptcomics.presentation.view.fragment.EndProductFragment
-import org.sopt24.dshyun0226.soptcomics.presentation.view.fragment.NewProductMainFragment
+import org.sopt24.dshyun0226.soptcomics.presentation.view.fragment.ProductFragment
 
 class ProductMainPagerAdapter(fm: androidx.fragment.app.FragmentManager, private val num_fragment: Int) : androidx.fragment.app.FragmentStatePagerAdapter(fm) {
     companion object { // 어뎁터에서 별도로 fragment 를 관리할 수 있다.
-        private var allProductFragment: AllProductMainFragment? = null
-        private var newProductMainFragment: NewProductMainFragment? = null
-        private var endProductMainFragment: EndProductFragment? = null
+        private var allProductFragment: ProductFragment? = null
+        private var newProductMainFragment: ProductFragment? = null
+        private var endProductMainFragment: ProductFragment? = null
 
         @Synchronized
-        fun getAllProductMainFragment(): AllProductMainFragment {
-            if (allProductFragment == null) allProductFragment = AllProductMainFragment()
+        fun getAllProductMainFragment(): ProductFragment {
+            if (allProductFragment == null) allProductFragment = ProductFragment("all")
             return allProductFragment!!
         }
 
         @Synchronized
-        fun getEndProductMainFragment(): EndProductFragment {
-            if (endProductMainFragment == null) endProductMainFragment = EndProductFragment()
+        fun getEndProductMainFragment(): ProductFragment {
+            if (endProductMainFragment == null) endProductMainFragment = ProductFragment("end")
             return endProductMainFragment!!
         }
 
         @Synchronized
-        fun getNewProductMainFragment(): NewProductMainFragment {
-            if (newProductMainFragment == null) newProductMainFragment = NewProductMainFragment()
+        fun getNewProductMainFragment(): ProductFragment {
+            if (newProductMainFragment == null) newProductMainFragment = ProductFragment("new")
             return newProductMainFragment!!
         }
     }

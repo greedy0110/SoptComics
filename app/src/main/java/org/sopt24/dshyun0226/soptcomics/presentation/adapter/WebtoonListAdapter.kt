@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.view.adapter
+package org.sopt24.dshyun0226.soptcomics.presentation.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

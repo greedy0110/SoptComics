@@ -6,7 +6,7 @@ import khronos.Dates
 import kotlinx.android.synthetic.main.activity_comment.*
 import kotlinx.android.synthetic.main.toolbar_comment.*
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.presentation.view.adapter.CommentAdapter
+import org.sopt24.dshyun0226.soptcomics.presentation.adapter.CommentAdapter
 import org.sopt24.dshyun0226.soptcomics.domain.model.CommentData
 
 class CommentActivity : AppCompatActivity() {

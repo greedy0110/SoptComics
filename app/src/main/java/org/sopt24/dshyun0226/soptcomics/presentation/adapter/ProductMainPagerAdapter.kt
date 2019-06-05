@@ -1,28 +1,31 @@
 package org.sopt24.dshyun0226.soptcomics.presentation.adapter
 
-import org.sopt24.dshyun0226.soptcomics.presentation.view.fragment.ProductFragment
+import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewFragment
 
 class ProductMainPagerAdapter(fm: androidx.fragment.app.FragmentManager, private val num_fragment: Int) : androidx.fragment.app.FragmentStatePagerAdapter(fm) {
     companion object { // 어뎁터에서 별도로 fragment 를 관리할 수 있다.
-        private var allProductFragment: ProductFragment? = null
-        private var newProductMainFragment: ProductFragment? = null
-        private var endProductMainFragment: ProductFragment? = null
+        private var allProductFragment: ComicsOverviewFragment? = null
+        private var newProductMainFragment: ComicsOverviewFragment? = null
+        private var endProductMainFragment: ComicsOverviewFragment? = null
 
         @Synchronized
-        fun getAllProductMainFragment(): ProductFragment {
-            if (allProductFragment == null) allProductFragment = ProductFragment("all")
+        fun getAllProductMainFragment(): ComicsOverviewFragment {
+            if (allProductFragment == null) allProductFragment =
+                ComicsOverviewFragment("all")
             return allProductFragment!!
         }
 
         @Synchronized
-        fun getEndProductMainFragment(): ProductFragment {
-            if (endProductMainFragment == null) endProductMainFragment = ProductFragment("end")
+        fun getEndProductMainFragment(): ComicsOverviewFragment {
+            if (endProductMainFragment == null) endProductMainFragment =
+                ComicsOverviewFragment("end")
             return endProductMainFragment!!
         }
 
         @Synchronized
-        fun getNewProductMainFragment(): ProductFragment {
-            if (newProductMainFragment == null) newProductMainFragment = ProductFragment("new")
+        fun getNewProductMainFragment(): ComicsOverviewFragment {
+            if (newProductMainFragment == null) newProductMainFragment =
+                ComicsOverviewFragment("new")
             return newProductMainFragment!!
         }
     }

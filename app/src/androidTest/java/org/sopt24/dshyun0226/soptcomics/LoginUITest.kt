@@ -10,7 +10,7 @@ import androidx.test.rule.ActivityTestRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.sopt24.dshyun0226.soptcomics.presentation.view.LoginActivity
+import org.sopt24.dshyun0226.soptcomics.presentation.login.LoginActivity
 
 
 // 1. Find a view -> 2. Perform an action -> 3. Inspect the result

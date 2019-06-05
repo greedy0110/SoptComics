@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.view
+package org.sopt24.dshyun0226.soptcomics.presentation.signup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import kotlinx.android.synthetic.main.activity_signup.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.SignupContract
+import org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupContract
 
 class SignupActivity : AppCompatActivity(), SignupContract.View {
 

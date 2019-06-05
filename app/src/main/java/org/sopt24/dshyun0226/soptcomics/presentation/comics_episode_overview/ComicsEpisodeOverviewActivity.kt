@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.view.activity
+package org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +10,7 @@ import org.sopt24.dshyun0226.soptcomics.presentation.adapter.WebtoonListAdapter
 import org.sopt24.dshyun0226.soptcomics.domain.model.WebToonData
 import java.util.*
 
-class ProductActivity : AppCompatActivity() {
+class ComicsEpisodeOverviewActivity : AppCompatActivity() {
 
     lateinit var adapter: WebtoonListAdapter
 
@@ -19,16 +19,20 @@ class ProductActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product)
 
         val title = intent.getStringExtra("title")
+        // 메인 text를 업데이트 해줘야함.
         txt_toolbar_product_title.text = title
 
         btn_toolbar_product_like.setOnClickListener {
+            // 좋아요 버튼 누르면 좋아요 업데이트 및 UI에 적용해야함
             btn_toolbar_product_like.isSelected = !btn_toolbar_product_like.isSelected
         }
 
         btn_toolbar_product_back.setOnClickListener {
+            // 백버튼 누르면 엑티비티를 종료해야함
             finish()
         }
 
+        // Comics Episode 리스트를 ListView에 채워넣음
         initWebtoonList()
     }
 
@@ -36,6 +40,7 @@ class ProductActivity : AppCompatActivity() {
         val data = ArrayList<WebToonData>()
 
         // api 콜로 대체될 것이다.
+        // 비동기 작업
         data.add(
             WebToonData(
                 0,

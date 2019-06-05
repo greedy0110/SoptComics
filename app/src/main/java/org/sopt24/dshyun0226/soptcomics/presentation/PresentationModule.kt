@@ -1,21 +1,21 @@
 package org.sopt24.dshyun0226.soptcomics.presentation
 
 import org.koin.dsl.module
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.LoginContract
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.MainContract
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.ProductContract
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.SignupContract
-import org.sopt24.dshyun0226.soptcomics.presentation.presenter.LoginPresenter
-import org.sopt24.dshyun0226.soptcomics.presentation.presenter.MainPresenter
-import org.sopt24.dshyun0226.soptcomics.presentation.presenter.ProductPresenter
-import org.sopt24.dshyun0226.soptcomics.presentation.presenter.SignupPresenter
+import org.sopt24.dshyun0226.soptcomics.presentation.login.LoginContract
+import org.sopt24.dshyun0226.soptcomics.presentation.main.MainContract
+import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewContract
+import org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupContract
+import org.sopt24.dshyun0226.soptcomics.presentation.login.LoginPresenter
+import org.sopt24.dshyun0226.soptcomics.presentation.main.MainPresenter
+import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewPresenter
+import org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupPresenter
 
 val PresentationModule = module {
-    factory { (view: ProductContract.View, kind: String) -> ProductPresenter(
+    factory { (view: ComicsOverviewContract.View, kind: String) -> ComicsOverviewPresenter(
         view = view,
         api = get(),
         kind = kind
-    ) as ProductContract.Presenter }
+    ) as ComicsOverviewContract.Presenter }
 
     factory { (view: MainContract.View) -> MainPresenter(
         view = view,

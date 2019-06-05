@@ -19,9 +19,9 @@
         </activity>
         <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.WebtoonActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.ProductActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview.ComicsEpisodeOverviewActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.MainActivity"/>
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.main.MainActivity"/>
         <activity
                 android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.SplashActivity"
                 android:theme="@style/SplashTheme">
@@ -31,9 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.LoginActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.login.LoginActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.SignupActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupActivity">
         </activity>
     </application>
 

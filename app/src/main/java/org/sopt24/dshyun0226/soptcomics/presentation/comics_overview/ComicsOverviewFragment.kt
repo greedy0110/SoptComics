@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.view.fragment
+package org.sopt24.dshyun0226.soptcomics.presentation.comics_overview
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,17 +10,16 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import org.sopt24.dshyun0226.soptcomics.R
 import org.sopt24.dshyun0226.soptcomics.domain.model.ProductOverviewData
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.ProductContract
 import org.sopt24.dshyun0226.soptcomics.presentation.adapter.ProductOverviewRecyclerViewAdapter
 
-class ProductFragment(private val kind: String) : androidx.fragment.app.Fragment(), ProductContract.View {
+class ComicsOverviewFragment(private val kind: String) : androidx.fragment.app.Fragment(), ComicsOverviewContract.View {
 
-    override fun drawProduct(list: ArrayList<ProductOverviewData>) {
+    override fun updateComicsOverviewList(list: ArrayList<ProductOverviewData>) {
         adapter.dataList = list
         adapter.notifyDataSetChanged()
     }
 
-    override val presenter: ProductContract.Presenter by inject { parametersOf(this, kind) }
+    override val presenter: ComicsOverviewContract.Presenter by inject { parametersOf(this, kind) }
 
     private lateinit var adapter: ProductOverviewRecyclerViewAdapter
 

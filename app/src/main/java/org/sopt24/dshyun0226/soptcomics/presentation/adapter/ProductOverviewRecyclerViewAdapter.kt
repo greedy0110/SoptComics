@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import org.jetbrains.anko.startActivity
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.presentation.view.activity.ProductActivity
+import org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview.ComicsEpisodeOverviewActivity
 import org.sopt24.dshyun0226.soptcomics.domain.model.ProductOverviewData
 
 class ProductOverviewRecyclerViewAdapter(val ctx: Context, var dataList: ArrayList<ProductOverviewData>):
@@ -30,7 +30,7 @@ class ProductOverviewRecyclerViewAdapter(val ctx: Context, var dataList: ArrayLi
         holder.author.text = dataList[pos].name
 
         holder.container.setOnClickListener {
-            ctx.startActivity<ProductActivity>(
+            ctx.startActivity<ComicsEpisodeOverviewActivity>(
                 "idx" to dataList[pos].idx,
                 "title" to dataList[pos].title
             )

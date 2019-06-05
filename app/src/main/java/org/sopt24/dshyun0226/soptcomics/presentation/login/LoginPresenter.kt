@@ -1,8 +1,7 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.presenter
+package org.sopt24.dshyun0226.soptcomics.presentation.login
 
 import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.domain.repository.UserDataSource
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.LoginContract
 
 class LoginPresenter(
     private val api: SoptComicsApi,

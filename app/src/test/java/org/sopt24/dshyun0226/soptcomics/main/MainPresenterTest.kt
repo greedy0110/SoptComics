@@ -6,8 +6,8 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import org.sopt24.dshyun0226.soptcomics.domain.repository.UserDataSource
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.MainContract
-import org.sopt24.dshyun0226.soptcomics.presentation.presenter.MainPresenter
+import org.sopt24.dshyun0226.soptcomics.presentation.main.MainContract
+import org.sopt24.dshyun0226.soptcomics.presentation.main.MainPresenter
 
 class MainPresenterTest {
     private lateinit var mainPresenter: MainPresenter

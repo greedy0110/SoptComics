@@ -3,7 +3,7 @@ package org.sopt24.dshyun0226.soptcomics.presentation.view.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.jetbrains.anko.startActivity
-import org.sopt24.dshyun0226.soptcomics.presentation.view.MainActivity
+import org.sopt24.dshyun0226.soptcomics.presentation.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 

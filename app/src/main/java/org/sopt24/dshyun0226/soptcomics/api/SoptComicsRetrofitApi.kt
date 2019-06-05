@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class SoptComicsRetrofitApi : SoptComicsApi {
+class SoptComicsRetrofitApi() : SoptComicsApi {
     private val baseURL = "http://hyunjkluz.ml:2424/"
 
     private val retrofitSoptComicsApi by lazy { Retrofit.Builder()
@@ -55,7 +55,7 @@ class SoptComicsRetrofitApi : SoptComicsApi {
         return postSignupResponse.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun requestProductList(kind: String): Observable<GetMainProductListResponse> {
+    override fun requestComicsOverviewList(kind: String): Observable<GetMainProductListResponse> {
         return retrofitSoptComicsApi.getMainProductListResponse("application/json", kindToFlag(kind))
             .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }

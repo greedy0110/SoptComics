@@ -1,7 +1,6 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.presenter
+package org.sopt24.dshyun0226.soptcomics.presentation.signup
 
 import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.SignupContract
 
 class SignupPresenter(
     private val view : SignupContract.View,

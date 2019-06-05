@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.contract
+package org.sopt24.dshyun0226.soptcomics.presentation.main
 
 import org.sopt24.dshyun0226.soptcomics.presentation.view.BaseView
 

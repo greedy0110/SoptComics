@@ -7,5 +7,5 @@ import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
 interface SoptComicsApi {
     fun requestToken(id: String, pw: String): Observable<String>
     fun requestSignup(name: String, id:String, pw:String): Observable<PostSignupResponse>
-    fun requestProductList(kind: String): Observable<GetMainProductListResponse>
+    fun requestComicsOverviewList(kind: String): Observable<GetMainProductListResponse>
 }

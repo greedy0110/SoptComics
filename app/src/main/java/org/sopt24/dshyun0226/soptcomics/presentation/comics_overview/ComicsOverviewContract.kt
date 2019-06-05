@@ -1,11 +1,11 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.contract
+package org.sopt24.dshyun0226.soptcomics.presentation.comics_overview
 
 import org.sopt24.dshyun0226.soptcomics.domain.model.ProductOverviewData
 import org.sopt24.dshyun0226.soptcomics.presentation.view.BaseView
 
-interface ProductContract {
+interface ComicsOverviewContract {
     interface View: BaseView<Presenter>{
-        fun drawProduct(productList: ArrayList<ProductOverviewData>)
+        fun updateComicsOverviewList(productList: ArrayList<ProductOverviewData>)
     }
 
     interface Presenter {

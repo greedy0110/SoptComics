@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.view
+package org.sopt24.dshyun0226.soptcomics.presentation.main
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -14,8 +14,9 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import org.sopt24.dshyun0226.soptcomics.presentation.adapter.ProductMainPagerAdapter
 import org.sopt24.dshyun0226.soptcomics.R
+import org.sopt24.dshyun0226.soptcomics.presentation.login.LoginActivity
 import org.sopt24.dshyun0226.soptcomics.presentation.adapter.ImageMainPagerAdapter
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.MainContract
+import org.sopt24.dshyun0226.soptcomics.presentation.main.MainContract
 
 class MainActivity : AppCompatActivity(), MainContract.View {
     override val presenter: MainContract.Presenter by inject { parametersOf(this) }

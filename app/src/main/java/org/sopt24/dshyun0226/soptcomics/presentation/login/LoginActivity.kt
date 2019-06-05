@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.view
+package org.sopt24.dshyun0226.soptcomics.presentation.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import org.jetbrains.anko.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.presentation.contract.LoginContract
+import org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupActivity
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
     override fun focusEditLoginID() {

@@ -1,6 +1,6 @@
 package org.sopt24.dshyun0226.soptcomics.domain.model
 
-data class ProductOverviewData(
+data class ComicsOverviewData(
     var thumnail: String,
     var idx: Int,
     var title: String,

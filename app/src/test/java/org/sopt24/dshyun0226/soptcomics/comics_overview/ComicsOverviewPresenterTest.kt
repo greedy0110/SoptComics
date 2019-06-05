@@ -8,8 +8,7 @@ import org.mockito.Matchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import org.sopt24.dshyun0226.soptcomics.domain.model.ProductOverviewData
-import org.sopt24.dshyun0226.soptcomics.api.response.GetMainProductListResponse
+import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsOverviewData
 import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewContract
 import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewPresenter
@@ -19,21 +18,16 @@ class ComicsOverviewPresenterTest {
 
     @Mock private lateinit var view: ComicsOverviewContract.View
     @Mock private lateinit var api: SoptComicsApi
-    private lateinit var mplr: GetMainProductListResponse
-    private var comicsOverviewList:ArrayList<ProductOverviewData> = arrayListOf()
+    private var comicsOverviewList:ArrayList<ComicsOverviewData> = arrayListOf()
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
 
-        presenter =
-            ComicsOverviewPresenter(view = view, api = api, kind = "all")
-        mplr = GetMainProductListResponse(
-            200, true, "sucess", comicsOverviewList
-        )
+        presenter = ComicsOverviewPresenter(view = view, api = api, kind = "all")
 
         `when`(api.requestComicsOverviewList(Matchers.anyString())).thenReturn(
-            Observable.just(mplr)
+            Observable.just(comicsOverviewList)
         )
     }
 

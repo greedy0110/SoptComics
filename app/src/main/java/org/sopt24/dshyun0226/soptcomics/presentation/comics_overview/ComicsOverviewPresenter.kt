@@ -11,7 +11,7 @@ class ComicsOverviewPresenter(
         // TODO 이 참조 정리 언제하지?
         api.requestComicsOverviewList(kind)
             .subscribe {
-                view.updateComicsOverviewList(it.data!!)
+                view.updateComicsOverviewList(it)
             }
     }
 }

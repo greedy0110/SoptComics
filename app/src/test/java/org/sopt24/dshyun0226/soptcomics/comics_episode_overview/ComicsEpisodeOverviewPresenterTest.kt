@@ -23,8 +23,8 @@ class ComicsEpisodeOverviewPresenterTest {
         MockitoAnnotations.initMocks(this)
 
         presenter = ComicsEpisodeOverviewPresenter(
-            view = view,
-            api = api
+            view = view
+         //   api = api
         )
     }
 
@@ -59,7 +59,7 @@ class ComicsEpisodeOverviewPresenterTest {
     fun onCreateThenInitEpisodeOverviewList(){
         presenter.onCreate("title")
 
-        verify(api).requestComicsEpisodeOverviewList()
+        //verify(api).requestComicsEpisodeOverviewList()
         verify(view).updateComicsEpisodeOverviewList()
     }
 }

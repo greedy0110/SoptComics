@@ -8,19 +8,19 @@ import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
 import retrofit2.http.*
 
 interface SoptComicsRetrofitApiInterface {
-    @POST("api/auth/signin")
+    @POST("/auth/users/signin")
     fun postLoginResponse(
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
     ): Observable<PostLoginResponse>
 
-    @POST("api/auth/signup")
+    @POST("/auth/users/signup")
     fun postSignupResponse(
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
     ): Observable<PostSignupResponse>
 
-    @GET("api/webtoons/main/{flag}")
+    @GET("/webtoon/comics/sort/{flag}")
     fun getMainProductListResponse(
         @Header("Content-Type") content_type: String,
         @Path("flag") flag: Int

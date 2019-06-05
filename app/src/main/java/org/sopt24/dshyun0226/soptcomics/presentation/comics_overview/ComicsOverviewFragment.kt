@@ -9,12 +9,12 @@ import kotlinx.android.synthetic.main.fragment_product.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.domain.model.ProductOverviewData
+import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsOverviewData
 import org.sopt24.dshyun0226.soptcomics.presentation.adapter.ProductOverviewRecyclerViewAdapter
 
 class ComicsOverviewFragment(private val kind: String) : androidx.fragment.app.Fragment(), ComicsOverviewContract.View {
 
-    override fun updateComicsOverviewList(list: ArrayList<ProductOverviewData>) {
+    override fun updateComicsOverviewList(list: List<ComicsOverviewData>) {
         adapter.dataList = list
         adapter.notifyDataSetChanged()
     }
@@ -34,7 +34,7 @@ class ComicsOverviewFragment(private val kind: String) : androidx.fragment.app.F
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var dataList: ArrayList<ProductOverviewData> = ArrayList()
+        var dataList: ArrayList<ComicsOverviewData> = ArrayList()
 
         adapter = ProductOverviewRecyclerViewAdapter(context!!, dataList)
         rv_product_overview_all.adapter = adapter

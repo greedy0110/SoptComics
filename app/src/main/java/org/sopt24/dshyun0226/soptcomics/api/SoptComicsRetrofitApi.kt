@@ -6,15 +6,15 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONObject
-import org.sopt24.dshyun0226.soptcomics.api.response.GetMainProductListResponse
 import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
+import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsOverviewData
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class SoptComicsRetrofitApi() : SoptComicsApi {
-    private val baseURL = "http://hyunjkluz.ml:2424/"
+class SoptComicsRetrofitApi : SoptComicsApi {
+    private val baseURL = "http://13.124.195.67:3000"
 
     private val retrofitSoptComicsApi by lazy { Retrofit.Builder()
         .baseUrl(baseURL)
@@ -25,7 +25,7 @@ class SoptComicsRetrofitApi() : SoptComicsApi {
     }
 
 
-    override fun requestToken(id: String, pw: String): Observable<String> {
+    override fun requestToken(id: String, pw: String): Observable<Int> {
         // Request Login
         val jsonObject = JSONObject().apply {
             // 보낼 데이터를 json 타입으로 만드는 것
@@ -43,9 +43,9 @@ class SoptComicsRetrofitApi() : SoptComicsApi {
 
     override fun requestSignup(name: String, id: String, pw: String): Observable<PostSignupResponse> {
         val jsonObject = JSONObject().apply {
-            put("id", id)
-            put("name", name)
-            put("password", pw)
+            put("u_id", id)
+            put("u_pw", pw)
+            put("u_name", name)
         }
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
@@ -55,9 +55,28 @@ class SoptComicsRetrofitApi() : SoptComicsApi {
         return postSignupResponse.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun requestComicsOverviewList(kind: String): Observable<GetMainProductListResponse> {
+    // TODO 네트워크 데이터와 앱에서 사용할 domain 데이터와의 변형!
+    override fun requestComicsOverviewList(kind: String): Observable<List<ComicsOverviewData>> {
         return retrofitSoptComicsApi.getMainProductListResponse("application/json", kindToFlag(kind))
-            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map {
+                if (it.data == null) {
+                    listOf()
+                }
+                else {
+                    it.data?.map { getData ->
+                        getData.run {
+                            ComicsOverviewData(
+                                thumnail = thumbnail,
+                                idx = comics_idx,
+                                title = title,
+                                likes = likes,
+                                name = writer,
+                                isFinished = if (isfinished) 1 else 0
+                            )
+                        }
+                    }
+                }
+            }
     }
 
     private fun kindToFlag(kind: String):Int = when(kind) {

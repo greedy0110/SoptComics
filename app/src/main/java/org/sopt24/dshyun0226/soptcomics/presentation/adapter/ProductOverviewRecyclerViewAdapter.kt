@@ -11,9 +11,9 @@ import com.bumptech.glide.Glide
 import org.jetbrains.anko.startActivity
 import org.sopt24.dshyun0226.soptcomics.R
 import org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview.ComicsEpisodeOverviewActivity
-import org.sopt24.dshyun0226.soptcomics.domain.model.ProductOverviewData
+import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsOverviewData
 
-class ProductOverviewRecyclerViewAdapter(val ctx: Context, var dataList: ArrayList<ProductOverviewData>):
+class ProductOverviewRecyclerViewAdapter(val ctx: Context, var dataList: List<ComicsOverviewData>):
     androidx.recyclerview.widget.RecyclerView.Adapter<ProductOverviewRecyclerViewAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view  = LayoutInflater.from(ctx).inflate(R.layout.rv_item_product_overview, viewGroup, false)

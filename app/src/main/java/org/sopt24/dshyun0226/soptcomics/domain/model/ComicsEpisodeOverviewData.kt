@@ -2,7 +2,7 @@ package org.sopt24.dshyun0226.soptcomics.domain.model
 
 import java.util.*
 
-data class WebToonData(
+data class ComicsEpisodeOverviewData(
     var webtoon_id: Int,
     var thumbnail_url: String,
     var title: String,

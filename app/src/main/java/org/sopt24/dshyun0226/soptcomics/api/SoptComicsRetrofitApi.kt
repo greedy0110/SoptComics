@@ -5,9 +5,11 @@ import com.google.gson.JsonParser
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import khronos.toDate
 import org.json.JSONObject
 import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
+import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsEpisodeOverviewData
 import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsOverviewData
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -75,6 +77,27 @@ class SoptComicsRetrofitApi : SoptComicsApi {
                             )
                         }
                     }
+                }
+            }
+    }
+
+    override fun requestComicsEpisodeOverviewList(comicsIndex: Int): Observable<Pair<Boolean, List<ComicsEpisodeOverviewData>>> {
+        return retrofitSoptComicsApi.getComicsEpisodeOverviewListResponse("application/json", comicsIndex)
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map {
+                if (it.data == null) {
+                    Pair(false, listOf())
+                }
+                else {
+                    Pair(it.data.liked,
+                        it.data.episode_list.map { getEp ->
+                            ComicsEpisodeOverviewData(
+                                webtoon_id = getEp.episode_idx,
+                                thumbnail_url = getEp.thumbnail,
+                                title = getEp.title,
+                                view_count = getEp.hits,
+                                upload_date = getEp.datetime.toDate("yyyy.MM.dd HH:mm:SS")
+                            )
+                    })
                 }
             }
     }

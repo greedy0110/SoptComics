@@ -1,6 +1,8 @@
 package org.sopt24.dshyun0226.soptcomics.presentation
 
 import org.koin.dsl.module
+import org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview.ComicsEpisodeOverviewContract
+import org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview.ComicsEpisodeOverviewPresenter
 import org.sopt24.dshyun0226.soptcomics.presentation.login.LoginContract
 import org.sopt24.dshyun0226.soptcomics.presentation.main.MainContract
 import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewContract
@@ -30,4 +32,9 @@ val PresentationModule = module {
         userDataSource = get(),
         view = view
     ) as LoginContract.Presenter }
+
+    factory {(view: ComicsEpisodeOverviewContract.View) -> ComicsEpisodeOverviewPresenter(
+        api = get(),
+        view = view
+    ) as ComicsEpisodeOverviewContract.Presenter}
 }

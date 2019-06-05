@@ -5,7 +5,6 @@ import org.junit.Test
 
 import org.junit.Before
 import org.mockito.Matchers
-import org.junit.Assert.*
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
@@ -22,15 +21,19 @@ class ComicsEpisodeOverviewPresenterTest {
     fun setup(){
         MockitoAnnotations.initMocks(this)
 
+        `when`(api.requestComicsEpisodeOverviewList(Matchers.anyInt())).thenReturn(
+            Observable.just(Pair(false, listOf()))
+        )
+
         presenter = ComicsEpisodeOverviewPresenter(
-            view = view
-         //   api = api
+            view = view,
+            api = api
         )
     }
 
     @Test
     fun onCreateThenSettingTitle(){
-        presenter.onCreate("title")
+        presenter.onCreate("title", 1)
 
         verify(view).setTitle("title")
     }
@@ -57,9 +60,8 @@ class ComicsEpisodeOverviewPresenterTest {
 
     @Test
     fun onCreateThenInitEpisodeOverviewList(){
-        presenter.onCreate("title")
+        presenter.onCreate("title", 1)
 
-        //verify(api).requestComicsEpisodeOverviewList()
-        verify(view).updateComicsEpisodeOverviewList()
+        verify(view).updateComicsEpisodeOverviewList(listOf())
     }
 }

@@ -9,12 +9,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.domain.model.WebToonData
+import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsEpisodeOverviewData
 import khronos.toString
 import org.jetbrains.anko.startActivity
 import org.sopt24.dshyun0226.soptcomics.presentation.view.activity.WebtoonActivity
 
-class WebtoonListAdapter(private val ctx: Context, var data: ArrayList<WebToonData>): androidx.recyclerview.widget.RecyclerView.Adapter<WebtoonListAdapter.Holder>() {
+class WebtoonListAdapter(private val ctx: Context, var data: List<ComicsEpisodeOverviewData>): androidx.recyclerview.widget.RecyclerView.Adapter<WebtoonListAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view  = LayoutInflater.from(ctx).inflate(R.layout.rv_item_webtoon_list, viewGroup, false)
         return Holder(view)

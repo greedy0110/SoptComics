@@ -1,8 +1,12 @@
 package org.sopt24.dshyun0226.soptcomics.presentation.main
 
+import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.domain.repository.UserDataSource
 
-class MainPresenter(private val view: MainContract.View, private val userDataSource: UserDataSource): MainContract.Presenter {
+class MainPresenter(
+    private val view: MainContract.View,
+    private val api: SoptComicsApi,
+    private val userDataSource: UserDataSource): MainContract.Presenter {
     override fun clickToolbarMainAction() {
         val isLoggedIn = userDataSource.getUserToken().isNotEmpty()
 
@@ -17,7 +21,10 @@ class MainPresenter(private val view: MainContract.View, private val userDataSou
 
     override fun onCreate() {
         view.configureMainTab()
-        view.configureMainImageTab()
+        api.requestBannerImageUrls()
+            .subscribe {
+                view.updateBannerImageList(it)
+            }
     }
 
     override fun onResume() {

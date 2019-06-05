@@ -52,9 +52,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         tl_main_category.getTabAt(2)!!.customView = navCategoryMainLayout.findViewById(R.id.rl_nav_category_main_end) as RelativeLayout
     }
 
-
-    override fun configureMainImageTab() {
-        vp_main_image.adapter = ImageMainPagerAdapter(supportFragmentManager, 3)
+    override fun updateBannerImageList(bannerImgUrls: List<String>) {
+        vp_main_image.adapter = ImageMainPagerAdapter(supportFragmentManager, bannerImgUrls)
         tl_main_image.setupWithViewPager(vp_main_image)
     }
 

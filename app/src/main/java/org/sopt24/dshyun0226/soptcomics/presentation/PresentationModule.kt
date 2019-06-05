@@ -21,6 +21,7 @@ val PresentationModule = module {
 
     factory { (view: MainContract.View) -> MainPresenter(
         view = view,
+        api = get(),
         userDataSource = get()
     ) as MainContract.Presenter }
     factory { (view: SignupContract.View) -> SignupPresenter(

@@ -6,8 +6,8 @@ interface MainContract {
     interface View: BaseView<Presenter> {
         fun startLoginActivity()
         fun configureMainTab()
-        fun configureMainImageTab()
         fun setToolbarMainActionButton(isLoggedIn: Boolean)
+        fun updateBannerImageList(bannerImgUrls: List<String>)
     }
 
     interface Presenter {

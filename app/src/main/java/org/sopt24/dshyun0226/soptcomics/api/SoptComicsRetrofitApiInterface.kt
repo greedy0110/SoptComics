@@ -2,10 +2,7 @@ package org.sopt24.dshyun0226.soptcomics.api
 
 import com.google.gson.JsonObject
 import io.reactivex.Observable
-import org.sopt24.dshyun0226.soptcomics.api.response.GetComicsEpisodeOverviewResponse
-import org.sopt24.dshyun0226.soptcomics.api.response.GetMainProductListResponse
-import org.sopt24.dshyun0226.soptcomics.api.response.PostLoginResponse
-import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
+import org.sopt24.dshyun0226.soptcomics.api.response.*
 import retrofit2.http.*
 
 interface SoptComicsRetrofitApiInterface {
@@ -32,4 +29,9 @@ interface SoptComicsRetrofitApiInterface {
         @Header("Content-Type") content_type: String,
         @Path("c_idx") c_idx: Int
     ): Observable<GetComicsEpisodeOverviewResponse>
+
+    @GET("/webtoon/banner")
+    fun getBannerImageUrls(
+        @Header("Content-Type") content_type: String
+    ): Observable<GetBannerImageUrlsResponse>
 }

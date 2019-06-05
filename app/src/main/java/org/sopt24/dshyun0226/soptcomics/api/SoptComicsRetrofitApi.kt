@@ -102,6 +102,15 @@ class SoptComicsRetrofitApi : SoptComicsApi {
             }
     }
 
+    override fun requestBannerImageUrls(): Observable<List<String>> {
+        return retrofitSoptComicsApi.getBannerImageUrls("application/json")
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map {
+                it.data.map { getBanner->
+                    getBanner.image_url
+                }
+            }
+    }
+
     private fun kindToFlag(kind: String):Int = when(kind) {
         "all" -> 1
         "new" -> 2

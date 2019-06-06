@@ -15,5 +15,5 @@ data class GetMainComicsOverviewData(
     val likes: Int,
     val thumbnail: String,
     val datetime: String,
-    val isfinished: Boolean
+    val isfinished: Int
 )

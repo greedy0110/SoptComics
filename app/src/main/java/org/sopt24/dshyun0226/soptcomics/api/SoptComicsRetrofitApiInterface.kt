@@ -34,4 +34,10 @@ interface SoptComicsRetrofitApiInterface {
     fun getBannerImageUrls(
         @Header("Content-Type") content_type: String
     ): Observable<GetBannerImageUrlsResponse>
+
+    @GET("/webtoon/comics/episode/{e_idx}")
+    fun getEpisode(
+        @Header("Content-Type") content_type: String,
+        @Path("e_idx") episode_index: Int
+    ): Observable<GetEpisodeResponse>
 }

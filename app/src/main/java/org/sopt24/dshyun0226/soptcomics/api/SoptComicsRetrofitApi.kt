@@ -73,7 +73,7 @@ class SoptComicsRetrofitApi : SoptComicsApi {
                                 title = title,
                                 likes = likes,
                                 name = writer,
-                                isFinished = if (isfinished) 1 else 0
+                                isFinished = isfinished
                             )
                         }
                     }
@@ -91,7 +91,7 @@ class SoptComicsRetrofitApi : SoptComicsApi {
                     Pair(it.data.liked,
                         it.data.episode_list.map { getEp ->
                             ComicsEpisodeOverviewData(
-                                webtoon_id = getEp.episode_idx,
+                                episode_index = getEp.episode_idx,
                                 thumbnail_url = getEp.thumbnail,
                                 title = getEp.title,
                                 view_count = getEp.hits,
@@ -108,6 +108,13 @@ class SoptComicsRetrofitApi : SoptComicsApi {
                 it.data.map { getBanner->
                     getBanner.image_url
                 }
+            }
+    }
+
+    override fun requestEpisodeImageUrl(episodeIndex: Int): Observable<String> {
+        return retrofitSoptComicsApi.getEpisode("application/json", episodeIndex)
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map {
+                it.data.image_url
             }
     }
 

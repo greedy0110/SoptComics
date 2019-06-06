@@ -12,4 +12,5 @@ interface SoptComicsApi {
     fun requestComicsOverviewList(kind: String): Observable<List<ComicsOverviewData>>
     fun requestComicsEpisodeOverviewList(comicsIndex: Int): Observable<Pair<Boolean, List<ComicsEpisodeOverviewData>>>
     fun requestBannerImageUrls(): Observable<List<String>>
+    fun requestEpisodeImageUrl(episodeIndex: Int): Observable<String>
 }

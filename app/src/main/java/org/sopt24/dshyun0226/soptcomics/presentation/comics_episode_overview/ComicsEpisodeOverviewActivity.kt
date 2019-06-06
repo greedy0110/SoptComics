@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.toolbar_product.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.presentation.adapter.WebtoonListAdapter
+import org.sopt24.dshyun0226.soptcomics.presentation.adapter.EpisodeListAdapter
 import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsEpisodeOverviewData
 
 class ComicsEpisodeOverviewActivity : AppCompatActivity(), ComicsEpisodeOverviewContract.View {
@@ -33,7 +33,7 @@ class ComicsEpisodeOverviewActivity : AppCompatActivity(), ComicsEpisodeOverview
 
     override val presenter: ComicsEpisodeOverviewContract.Presenter by inject { parametersOf(this) }
 
-    lateinit var adapter: WebtoonListAdapter
+    lateinit var adapter: EpisodeListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +63,7 @@ class ComicsEpisodeOverviewActivity : AppCompatActivity(), ComicsEpisodeOverview
     }
 
     private fun initWebtoonList() {
-        adapter = WebtoonListAdapter(this, listOf())
+        adapter = EpisodeListAdapter(this, listOf())
         rv_product_activity.adapter = adapter
         rv_product_activity.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
     }

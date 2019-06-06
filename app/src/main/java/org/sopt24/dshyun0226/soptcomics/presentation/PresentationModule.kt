@@ -10,9 +10,16 @@ import org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupContract
 import org.sopt24.dshyun0226.soptcomics.presentation.login.LoginPresenter
 import org.sopt24.dshyun0226.soptcomics.presentation.main.MainPresenter
 import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewPresenter
+import org.sopt24.dshyun0226.soptcomics.presentation.episode.EpisodeContract
+import org.sopt24.dshyun0226.soptcomics.presentation.episode.EpisodePresenter
 import org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupPresenter
 
 val PresentationModule = module {
+    factory { (view: EpisodeContract.View) -> EpisodePresenter(
+        view = view,
+        api = get()
+    ) as EpisodeContract.Presenter }
+
     factory { (view: ComicsOverviewContract.View, kind: String) -> ComicsOverviewPresenter(
         view = view,
         api = get(),

@@ -17,7 +17,7 @@
             android:usesCleartextTraffic="true">
         <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.CommentActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.WebtoonActivity">
+        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.episode.EpisodeActivity">
         </activity>
         <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview.ComicsEpisodeOverviewActivity">
         </activity>

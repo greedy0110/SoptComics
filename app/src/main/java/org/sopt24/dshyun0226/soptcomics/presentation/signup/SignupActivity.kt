@@ -35,4 +35,9 @@ class SignupActivity : AppCompatActivity(), SignupContract.View {
             presenter.signup(name, id, pw)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestory()
+    }
 }

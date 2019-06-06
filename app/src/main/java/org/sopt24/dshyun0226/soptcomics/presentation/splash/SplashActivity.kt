@@ -1,4 +1,4 @@
-package org.sopt24.dshyun0226.soptcomics.presentation.view.activity
+package org.sopt24.dshyun0226.soptcomics.presentation.splash
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

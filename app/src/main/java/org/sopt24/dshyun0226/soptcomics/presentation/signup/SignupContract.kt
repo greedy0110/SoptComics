@@ -1,6 +1,6 @@
 package org.sopt24.dshyun0226.soptcomics.presentation.signup
 
-import org.sopt24.dshyun0226.soptcomics.presentation.view.BaseView
+import org.sopt24.dshyun0226.soptcomics.presentation.BaseView
 
 interface SignupContract {
     interface View : BaseView<Presenter> {
@@ -12,5 +12,6 @@ interface SignupContract {
 
     interface Presenter {
         fun signup(name: String, id: String, pw: String)
+        fun onDestory()
     }
 }

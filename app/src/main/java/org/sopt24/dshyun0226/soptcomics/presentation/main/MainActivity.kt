@@ -38,6 +38,11 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         presenter.onResume()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
     override fun configureMainTab() {
         vp_main_product.adapter =
             ProductMainPagerAdapter(supportFragmentManager, 3)

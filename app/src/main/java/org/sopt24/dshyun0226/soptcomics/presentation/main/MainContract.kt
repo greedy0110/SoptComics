@@ -1,6 +1,6 @@
 package org.sopt24.dshyun0226.soptcomics.presentation.main
 
-import org.sopt24.dshyun0226.soptcomics.presentation.view.BaseView
+import org.sopt24.dshyun0226.soptcomics.presentation.BaseView
 
 interface MainContract {
     interface View: BaseView<Presenter> {
@@ -14,5 +14,6 @@ interface MainContract {
         fun clickToolbarMainAction()
         fun onCreate()
         fun onResume()
+        fun onDestroy()
     }
 }

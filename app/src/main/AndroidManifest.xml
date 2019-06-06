@@ -23,7 +23,7 @@
         </activity>
         <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.main.MainActivity"/>
         <activity
-                android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.SplashActivity"
+                android:name="org.sopt24.dshyun0226.soptcomics.presentation.splash.SplashActivity"
                 android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

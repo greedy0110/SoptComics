@@ -42,4 +42,9 @@ class ComicsOverviewFragment(private val kind: String) : androidx.fragment.app.F
 
         presenter.onActivityCreated()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
 }

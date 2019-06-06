@@ -57,6 +57,11 @@ class ComicsEpisodeOverviewActivity : AppCompatActivity(), ComicsEpisodeOverview
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
     private fun initWebtoonList() {
         adapter = WebtoonListAdapter(this, listOf())
         rv_product_activity.adapter = adapter

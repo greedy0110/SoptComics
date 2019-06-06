@@ -40,4 +40,10 @@ interface SoptComicsRetrofitApiInterface {
         @Header("Content-Type") content_type: String,
         @Path("e_idx") episode_index: Int
     ): Observable<GetEpisodeResponse>
+
+    @GET("/webtoon/comics/episode/{e_idx}/comments")
+    fun getEpisodeComment(
+        @Header("Content-Type") content_type: String,
+        @Path("e_idx") episode_index: Int
+    ): Observable<GetEpisodeCommentResponse>
 }

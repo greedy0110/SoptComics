@@ -12,7 +12,7 @@ import khronos.toString
 import org.sopt24.dshyun0226.soptcomics.R
 import org.sopt24.dshyun0226.soptcomics.domain.model.CommentData
 
-class CommentAdapter(private val ctx: Context, var data: ArrayList<CommentData>): androidx.recyclerview.widget.RecyclerView.Adapter<CommentAdapter.Holder>() {
+class CommentAdapter(private val ctx: Context, var data: List<CommentData>): androidx.recyclerview.widget.RecyclerView.Adapter<CommentAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(ctx).inflate(R.layout.rv_item_comment, viewGroup, false)
         return Holder(view)

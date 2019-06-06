@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
-            android:name="org.sopt24.dshyun0226.soptcomics.SoptApplication"
+            android:name=".SoptApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -15,15 +15,17 @@
             android:supportsRtl="true"
             android:theme="@style/MainTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.view.activity.CommentActivity">
+        <activity android:name=".presentation.view.activity.WriteCommentActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.episode.EpisodeActivity">
+        <activity android:name=".presentation.comment.CommentActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview.ComicsEpisodeOverviewActivity">
+        <activity android:name=".presentation.episode.EpisodeActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.main.MainActivity"/>
+        <activity android:name=".presentation.comics_episode_overview.ComicsEpisodeOverviewActivity">
+        </activity>
+        <activity android:name=".presentation.main.MainActivity"/>
         <activity
-                android:name="org.sopt24.dshyun0226.soptcomics.presentation.splash.SplashActivity"
+                android:name=".presentation.splash.SplashActivity"
                 android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,9 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.login.LoginActivity">
+        <activity android:name=".presentation.login.LoginActivity">
         </activity>
-        <activity android:name="org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupActivity">
+        <activity android:name=".presentation.signup.SignupActivity">
         </activity>
     </application>
 

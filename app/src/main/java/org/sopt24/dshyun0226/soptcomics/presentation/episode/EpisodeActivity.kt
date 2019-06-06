@@ -9,7 +9,7 @@ import org.jetbrains.anko.startActivity
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import org.sopt24.dshyun0226.soptcomics.R
-import org.sopt24.dshyun0226.soptcomics.presentation.view.activity.CommentActivity
+import org.sopt24.dshyun0226.soptcomics.presentation.comment.CommentActivity
 
 class EpisodeActivity : AppCompatActivity(), EpisodeContract.View {
     override val presenter: EpisodeContract.Presenter by inject { parametersOf(this) }

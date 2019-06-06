@@ -11,6 +11,7 @@ import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
 import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsEpisodeOverviewData
 import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsOverviewData
+import org.sopt24.dshyun0226.soptcomics.domain.model.CommentData
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -73,7 +74,7 @@ class SoptComicsRetrofitApi : SoptComicsApi {
                                 title = title,
                                 likes = likes,
                                 name = writer,
-                                isFinished = isfinished
+                                isFinished = if (isfinished) 1 else 0
                             )
                         }
                     }
@@ -115,6 +116,23 @@ class SoptComicsRetrofitApi : SoptComicsApi {
         return retrofitSoptComicsApi.getEpisode("application/json", episodeIndex)
             .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map {
                 it.data.image_url
+            }
+    }
+
+    override fun requestComments(episodeIndex: Int): Observable<List<CommentData>> {
+        return retrofitSoptComicsApi.getEpisodeComment("application/json", episodeIndex)
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map {
+                it.data.map { get->
+                    get.run {
+                        CommentData(
+                            comment_id = comments_idx,
+                            thumbnail_url = image_url_list[0],
+                            nickname = name,
+                            write_date = writetime.toDate("yyyy.MM.dd HH:mm:SS"),
+                            content = content
+                        )
+                    }
+                }
             }
     }
 

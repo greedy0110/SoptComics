@@ -39,6 +39,11 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         }
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestory()
+    }
 }
 
 

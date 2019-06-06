@@ -1,11 +1,14 @@
 package org.sopt24.dshyun0226.soptcomics.presentation.signup
 
+import io.reactivex.disposables.CompositeDisposable
 import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
 
 class SignupPresenter(
     private val view : SignupContract.View,
     private val api: SoptComicsApi
 ) : SignupContract.Presenter {
+    private val compositeDisposable = CompositeDisposable()
+
     override fun signup(name: String, id: String, pw: String) {
         when {
             name.isEmpty() -> view.focusEditSignupName()
@@ -21,5 +24,9 @@ class SignupPresenter(
                     }
             }
         }
+    }
+
+    override fun onDestory() {
+        compositeDisposable.dispose()
     }
 }

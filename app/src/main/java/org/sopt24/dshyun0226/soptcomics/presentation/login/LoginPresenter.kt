@@ -1,8 +1,8 @@
 package org.sopt24.dshyun0226.soptcomics.presentation.login
 
 import io.reactivex.disposables.CompositeDisposable
-import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
-import org.sopt24.dshyun0226.soptcomics.domain.repository.UserDataSource
+import org.sopt24.dshyun0226.soptcomics.repository.SoptComicsApi
+import org.sopt24.dshyun0226.soptcomics.repository.UserDataSource
 
 class LoginPresenter(
     private val api: SoptComicsApi,

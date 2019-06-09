@@ -1,7 +1,7 @@
 package org.sopt24.dshyun0226.soptcomics.presentation.comics_episode_overview
 
 import io.reactivex.disposables.CompositeDisposable
-import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
+import org.sopt24.dshyun0226.soptcomics.repository.SoptComicsApi
 
 class ComicsEpisodeOverviewPresenter(
     private val view: ComicsEpisodeOverviewContract.View,

@@ -7,7 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import khronos.toDate
 import org.json.JSONObject
-import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
+import org.sopt24.dshyun0226.soptcomics.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
 import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsEpisodeOverviewData
 import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsOverviewData

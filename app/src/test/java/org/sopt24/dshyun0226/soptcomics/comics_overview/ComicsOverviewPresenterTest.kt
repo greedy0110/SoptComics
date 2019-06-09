@@ -9,7 +9,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import org.sopt24.dshyun0226.soptcomics.domain.model.ComicsOverviewData
-import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
+import org.sopt24.dshyun0226.soptcomics.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewContract
 import org.sopt24.dshyun0226.soptcomics.presentation.comics_overview.ComicsOverviewPresenter
 

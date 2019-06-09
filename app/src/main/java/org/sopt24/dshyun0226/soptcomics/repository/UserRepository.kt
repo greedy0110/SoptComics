@@ -2,7 +2,6 @@ package org.sopt24.dshyun0226.soptcomics.repository
 
 import android.content.Context
 import android.content.SharedPreferences
-import org.sopt24.dshyun0226.soptcomics.domain.repository.UserDataSource
 
 class UserRepository(private val ctx: Context) : UserDataSource {
     private val MY_ACCOUNT = "unique_string"

@@ -7,7 +7,7 @@ import org.mockito.Matchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import org.sopt24.dshyun0226.soptcomics.domain.repository.SoptComicsApi
+import org.sopt24.dshyun0226.soptcomics.repository.SoptComicsApi
 import org.sopt24.dshyun0226.soptcomics.api.response.PostSignupResponse
 import org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupContract
 import org.sopt24.dshyun0226.soptcomics.presentation.signup.SignupPresenter
